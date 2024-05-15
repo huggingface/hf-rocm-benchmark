@@ -107,16 +107,23 @@ class TorchTracemalloc:
 
 def main():
     accelerator = Accelerator()
-    model_name_or_path = "meta-llama/Meta-Llama-3-8B-Instruct"
+    # model_name_or_path = "meta-llama/Meta-Llama-3-8B-Instruct"
+    model_name_or_path = "meta-llama/Meta-Llama-3-70B-Instruct"
+
     dataset_name = "twitter_complaints"
     peft_config = LoraConfig(task_type=TaskType.CAUSAL_LM, inference_mode=False, r=8, lora_alpha=32, lora_dropout=0.1)
     text_column = "Tweet text"
     label_column = "text_label"
     lr = 3e-3
     num_epochs = 1
-    batch_size = 2
     seed = 42
-    max_length = 2048
+
+    # batch_size = 2
+    # max_length = 1024
+
+    batch_size = 2
+    max_length = 448
+
     do_test = False
     set_seed(seed)
 
@@ -189,7 +196,7 @@ def main():
 
     train_dataset = processed_datasets["train"]
 
-    print("train_dataset", train_dataset)
+    print("train_dataset[0]", train_dataset[0])
 
     with accelerator.main_process_first():
         processed_datasets = dataset.map(
