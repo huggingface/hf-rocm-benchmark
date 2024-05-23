@@ -24,9 +24,9 @@ text-generation-benchmark --tokenizer-name meta-llama/Meta-Llama-3-70B-Instruct 
     -b 1 -b 2 -b 4 -b 8 -b 16 -b 32 -b 64
 ```
 
-Once the benchmark is finished, one can press Ctrl+C in the benchmark shell and should find markdown table summarizing prefill and decode latency, as well as throughput.
+Once the benchmark is finished, one can press Ctrl+C in the benchmark shell and should find a markdown table summarizing prefill and decode latency, as well as throughput.
 
-Note: TGI's `text-generation-benchmark` tends to OOM, which does not reflect the real memory limit of the benchmarked GPUs. For reference: https://github.com/huggingface/text-generation-inference/issues/1831, https://github.com/huggingface/text-generation-inference/issues/1286
+Note: TGI's tool `text-generation-benchmark` tends to OOM, which does not reflect the real memory limit of the benchmarked GPUs. For reference: https://github.com/huggingface/text-generation-inference/issues/1831, https://github.com/huggingface/text-generation-inference/issues/1286
 
 Note: Once released, we recommend to use the image `ghcr.io/huggingface/text-generation-inference:2.1-rocm` instead of `ghcr.io/huggingface/text-generation-inference:sha-293b8125-rocm`. TGI on ROCm can also be built from source using [this dockerfile](https://github.com/huggingface/text-generation-inference/blob/main/Dockerfile_amd).
 
