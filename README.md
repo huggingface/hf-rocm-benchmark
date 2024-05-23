@@ -9,13 +9,13 @@ docker run --rm -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
     --model-id meta-llama/Meta-Llama-3-70B-Instruct --num-shard 8
 ```
 
-Then, a second shell needs to be open within TGI's server container:
+Then, a second shell needs to be open in TGI's server container:
 ```
 docker container ls
 docker exec -it container_name /bin/bash
 ```
 
-From the second container:
+From the second shell:
 ```
 huggingface-cli login --token your_hf_read_token
 
